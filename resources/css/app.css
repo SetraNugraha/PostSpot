@@ -9,7 +9,7 @@
     }
 
     .title {
-        @apply font-bold text-3xl text-slate-700 py-5;
+        @apply font-bold text-3xl text-slate-700 py-5 text-center;
     }
 
     .form {
