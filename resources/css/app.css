@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+    .nav-link {
+        @apply text-white font-bold py-2 px-2 hover:bg-white hover:text-slate-700 hover:rounded-md;
+    }
+
+    .title {
+        @apply font-bold text-3xl text-slate-700 py-5;
+    }
+
+    .form {
+        @apply  px-5 py-7 flex flex-col gap-y-5 rounded-xl border-[1px] border-slate-300 shadow-xl
+    }
+
+    .form-input {
+        @apply flex flex-col gap-y-2;
+    }
+
+    .label {
+        @apply font-semibold ml-1 text-slate-700 
+    }
+
+    .input {
+        @apply rounded-md h-[40px] border-[1px] border-slate-300 pl-3 font-semibold text-slate-800
+    }
+
+    .input-file {
+        @apply rounded-md h-[40px] border-[1px] border-slate-300 pl-3 font-semibold text-slate-800
+    }
+
+    .btn {
+        @apply w-full py-2 bg-slate-700 text-white font-bold rounded-lg hover:opacity-60 shadow-xl
+    }
+
+    .menu-user {
+        @apply border-[1px] border-slate-300 hover:shadow-lg py-2 px-3 rounded-lg font-semibold text-sm w-full text-start
+    }
+
+    .card-posts {
+        @apply px-5 py-5 shadow-lg rounded-lg border-[0.5px] border-slate-200
+    }
+
+    .input-newpost {
+        @apply border-[1px] border-slate-200 rounded-md pl-3 pt-3 font-semibold text-slate-800
+    }
+}
