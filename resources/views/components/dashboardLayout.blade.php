@@ -7,6 +7,8 @@
         {{-- Session Message --}}
         @if (Session::has('success'))
             <x-flashMsg msg="{{ Session('success') }}" />
+        @elseif (Session::has('error'))
+            <x-flashMsg msg="{{ Session('error') }}" icon="error" />
         @elseif (Session::has('delete'))
             <x-flashMsg msg="{{ Session('delete') }}" />
         @endif
@@ -17,11 +19,11 @@
                 <div class="bg-slate-600 rounded-lg h-[720px]">
                     <div class="flex flex-col gap-y-3 font-semibold text-white px-3 py-5">
                         <a href="{{ route('dashboard.index') }}"
-                            class="px-2 py-1 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.index') ? 'bg-white text-black' : ''}}">Dashboard</a>
+                            class="px-2 py-1 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.index') ? 'bg-white text-black' : '' }}">Dashboard</a>
                         <a href="{{ route('dashboard.posts') }}"
-                            class="px-2 py-1 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.posts') ? 'bg-white text-black' : ''}}">Posts</a>
+                            class="px-2 py-1 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.posts') ? 'bg-white text-black' : '' }}">Posts</a>
                         <a href="{{ route('dashboard.profile') }}"
-                            class="px-2 py-1 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.profile') ? 'bg-white text-black' : ''}}">Profile</a>
+                            class="px-2 py-1 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.profile') ? 'bg-white text-black' : '' }}">Profile</a>
                     </div>
                 </div>
             </section>

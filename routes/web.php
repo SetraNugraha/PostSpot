@@ -36,7 +36,10 @@ Route::middleware('auth')->group(function () {
   // Dashboard
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
   Route::get('/dashboard/posts', [DashboardController::class, 'posts'])->name('dashboard.posts');
+
+  // Dashboard Profile
   Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
   Route::get('/dashboard/profile/{user}', [DashboardController::class, 'editProfile'])->name('dashboard.editProfile');
   Route::patch('/dashboard/profile/{user}', [DashboardController::class, 'updateProfile'])->name('dashboard.updateProfile');
+  Route::delete('/dashboard/profile/{user}', [DashboardController::class, 'deleteProfileImage'])->name('dashboard.deleteProfileImage');
 });

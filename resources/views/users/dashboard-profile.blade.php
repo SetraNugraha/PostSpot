@@ -23,7 +23,9 @@
                                 class="bg-white p-2 h-[150px] w-[150px] rounded-full border border-slate-500">
                         @endif
 
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        {{-- Delete Image Profile --}}
+                        <form action="{{ route('dashboard.deleteProfileImage', Auth::user()->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('DELETE')
 

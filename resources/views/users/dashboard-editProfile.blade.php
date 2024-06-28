@@ -18,9 +18,15 @@
 
                         {{-- Profile Image --}}
                         <div class="flex flex-col items-center gap-y-5 h-[200px] w-[250px]">
-                            <img src="{{ asset('img/snorlax.png') }}" alt=""
-                                class="bg-white p-2 rounded-full border border-slate-500 w-[150px] h-[150px]">
-                            <input type="file" name="profile_image" class="block w-full text-sm text-slate-500
+                            @if (Auth::user()->profile_image)
+                                <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="user-icon"
+                                    class="bg-white p-2 rounded-full border border-slate-500 w-[150px] h-[150px]">
+                            @else
+                                <img src="{{ asset('img/user-icon.png') }}" alt="user-icon"
+                                    class="bg-white p-2 rounded-full border border-slate-500 w-[150px] h-[150px]">
+                            @endif
+                            <input type="file" name="profile_image"
+                                class="block w-full text-sm text-slate-500
                             file:mr-4 file:py-1 file:px-4
                             file:rounded-full file:border-0
                             file:text-sm file:font-semibold

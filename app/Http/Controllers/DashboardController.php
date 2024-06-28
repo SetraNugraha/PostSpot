@@ -65,7 +65,22 @@ class DashboardController extends Controller
         return redirect()->route('dashboard.profile')->with('success', 'Profile Updated.');
     }
 
+    public function deleteProfileImage(User $user)
+    {
+        // Delete profile image id exists
+        if ($user->profile_image) {
+            Storage::disk('public')->delete($user->profile_image);
+        } else {
+            return back()->with('error', "You Dont Have a Profile Image");
+        }
 
+        // Delete on Database
+        $user->profile_image = null;
+        $user->save();
+
+        //redirect
+        return back()->with('success', 'Your Profile Image Successfuly Deleted !');
+    }
 
     public function showUserPost(User $user)
     {
