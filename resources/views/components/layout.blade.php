@@ -26,8 +26,13 @@
                 @auth
                     <div x-data="{ open: false }">
                         <button @click="open = !open" type="button" class="bg-white rounded-full p-1">
-                            <img src="{{ asset('img/user-icon.png') }}" alt="user-icon"
-                                class="w-[30px] h-[30px] rounded-full hover:opacity-70">
+                            @if (Auth::user()->profile_image)
+                                <img src="{{ asset('storage/'. Auth::user()->profile_image) }}" alt="user-icon"
+                                    class="w-[30px] h-[30px] rounded-full hover:opacity-70">
+                            @else
+                                <img src="{{ asset('img/user-icon.png') }}" alt="user-icon"
+                                    class="w-[30px] h-[30px] rounded-full hover:opacity-70">
+                            @endif
                         </button>
 
                         {{-- Container After User Button Click --}}

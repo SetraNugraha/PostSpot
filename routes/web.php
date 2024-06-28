@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', 'posts');
 
 // User Post
-Route::get('/{user}/post', [DashboardController::class, 'showUserPost'])->name('posts.user');
+Route::get('/{user}/post', [DashboardController::class, 'showUserPost'])->name('showUserPost');
 
 // Reesource Post
 Route::resource('posts', PostController::class);
@@ -37,4 +37,6 @@ Route::middleware('auth')->group(function () {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
   Route::get('/dashboard/posts', [DashboardController::class, 'posts'])->name('dashboard.posts');
   Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
+  Route::get('/dashboard/profile/{user}', [DashboardController::class, 'editProfile'])->name('dashboard.editProfile');
+  Route::patch('/dashboard/profile/{user}', [DashboardController::class, 'updateProfile'])->name('dashboard.updateProfile');
 });

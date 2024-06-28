@@ -1,18 +1,36 @@
 <x-dashboardLayout>
     <div class="h-[720px]">
         {{-- Header --}}
-        <div>
-            <h1 class="text-white font-bold text-lg mb-3 bg-slate-600 px-3 py-1 rounded-lg shadow-lg">Profile</h1>
+        <div class="flex justify-between items-center gap-x-2">
+            <h1 class="text-white font-bold text-lg mb-3 bg-slate-600 px-3 py-1 rounded-lg w-[80%] shadow-lg">
+                Your Profile</h1>
+            <a href="{{ route('dashboard.editProfile', Auth::user()->id) }}"
+                class="text-white text-md text-center font-bold mb-3 bg-blue-500 px-3 py-1 rounded-lg w-[20%] hover:opacity-70 shadow-lg">
+                Update Profile</a>
         </div>
 
         {{-- Content --}}
         <section>
-            <div class="border-[0.5px] border-slate-300 shadow-lg px-5 py-5 rounded-lg">
+            <div class="border-[0.5px] border-slate-300 shadow-lg px-5 pt-5 pb-3 rounded-lg">
                 {{-- Image Profile --}}
                 <div class="flex gap-x-10">
-                    <div>
-                        <img src="{{ asset('img/snorlax.png') }}" alt=""
-                            class="bg-white p-2 h-[150px] w-[150px] rounded-full border border-slate-500">
+                    <div class="flex flex-col gap-y-5 justify-center items-center">
+                        @if (Auth::user()->profile_image)
+                            <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt=""
+                                class="bg-white p-2 h-[150px] w-[150px] rounded-full border border-slate-500">
+                        @else
+                            <img src="{{ asset('img/user-icon.png') }}" alt=""
+                                class="bg-white p-2 h-[150px] w-[150px] rounded-full border border-slate-500">
+                        @endif
+
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit"
+                                class="px-2 py-1 rounded-lg text-white font-semibold bg-red-500 border-[0.5px] border-slate-400 shadow-lg hover:opacity-70">Delete
+                                Image</button>
+                        </form>
                     </div>
 
                     {{-- Email & Name User --}}

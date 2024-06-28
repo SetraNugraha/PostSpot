@@ -19,13 +19,13 @@
             Posted
             <span class="font-semibold">{{ $post->created_at->diffForHumans() }}</span>
             By
-            <a href="{{ route('posts.user', $post->author) }}" class="text-blue-500">{{ $post->author->username }}</a>
+            <a href="{{ route('showUserPost', $post->user->id) }}" class="text-blue-500">{{ $post->user->username }}</a>
         </p>
     </div>
 
     {{-- body --}}
     @if ($readMore)
-    {{-- Expand --}}
+        {{-- Expand --}}
         <div class="my-5 flex flex-col gap-y-5">
             <span class="text-justify">{{ $post->body }}</span>
             @if ($post->image)
@@ -33,7 +33,7 @@
             @endif
         </div>
     @else
-    {{-- No Expand --}}
+        {{-- No Expand --}}
         <div class="my-2 flex justify-between items-center">
             <div class="w-[80%] text-justify">
                 <span class="text-sm">{{ Str::words($post->body, 15) }}</span>
