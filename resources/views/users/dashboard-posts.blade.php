@@ -1,6 +1,6 @@
 <x-dashboardLayout>
     <div class="h-[720px]">
-        {{-- Latest post --}}
+        {{-- Header --}}
         <section>
             <div class="flex justify-between items-center gap-x-2">
                 <h1 class="text-white font-bold text-lg mb-3 bg-slate-600 px-3 py-1 rounded-lg w-[80%] shadow-lg">
@@ -11,9 +11,11 @@
                     Create New Post</a>
             </div>
 
+            {{-- Content if null --}}
             @if ($posts->isEmpty())
                 <p class="text-center">You haven't made a post yet</p>
             @else
+                {{-- Content if have post --}}
                 <div class="grid grid-cols-2 gap-5 mt-3">
                     @foreach ($posts as $post)
                         <x-postCard :post="$post">
@@ -37,7 +39,7 @@
                                     <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button
+                                        <button onclick="confirmationDelete(event)"
                                             class="px-2 py-1 rounded-lg bg-red-600 text-white font-semibold text-xs hover:opacity-50 hover:cursor-pointer">
                                             Delete
                                         </button>
@@ -55,4 +57,5 @@
             {{ $posts->links() }}
         </div>
     </div>
+    
 </x-dashboardLayout>

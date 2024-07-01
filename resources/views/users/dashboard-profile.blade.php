@@ -29,7 +29,7 @@
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit"
+                            <button type="submit" onclick="confirmationDelete(event)"
                                 class="px-2 py-1 rounded-lg text-white font-semibold bg-red-500 border-[0.5px] border-slate-400 shadow-lg hover:opacity-70">Delete
                                 Image</button>
                         </form>
