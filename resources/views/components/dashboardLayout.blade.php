@@ -19,11 +19,26 @@
                 <div class="bg-slate-600 rounded-lg h-[720px]">
                     <div class="flex flex-col gap-y-3 font-semibold text-white px-3 py-5">
                         <a href="{{ route('dashboard.index') }}"
-                            class="px-2 py-1 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.index') ? 'bg-white text-black' : '' }}">Dashboard</a>
+                            class="px-2 py-1 flex items-center gap-x-2 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.index') ? 'bg-white text-black' : '' }}"><span>
+
+                                <img src="{{ asset('img/icon-dashboard.svg') }}" alt=""
+                                    class="w-[19px] h-[19px] fill-current text-black">
+                            </span>
+                            Dashboard
+                        </a>
                         <a href="{{ route('dashboard.posts') }}"
-                            class="px-2 py-1 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.posts') ? 'bg-white text-black' : '' }}">Posts</a>
+                            class="px-2 py-1 flex items-center gap-x-2 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.posts') ? 'bg-white text-black' : '' }}">
+                            <span>
+                                <img src="{{ asset('img/icon-post.svg') }}" alt=""
+                                    class="w-[20px] h-[20px] fill-current text-black">
+                            </span>
+                            Posts</a>
                         <a href="{{ route('dashboard.profile') }}"
-                            class="px-2 py-1 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.profile') ? 'bg-white text-black' : '' }}">Profile</a>
+                            class="px-2 py-1 flex items-center gap-x-2 rounded-lg hover:text-black hover:bg-white {{ request()->routeIs('dashboard.profile') ? 'bg-white text-black' : '' }}">
+                            <span>
+                                <img src="{{ asset('img/icon-profile.svg') }}" alt=""
+                                    class="w-[20px] h-[20px] fill-current text-black">
+                            </span>Profile</a>
                     </div>
                 </div>
             </section>

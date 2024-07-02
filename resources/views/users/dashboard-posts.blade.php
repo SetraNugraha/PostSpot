@@ -1,5 +1,5 @@
 <x-dashboardLayout>
-    <div class="h-[720px]">
+    <div class="h-[720px] flex flex-col justify-between">
         {{-- Header --}}
         <section>
             <div class="flex justify-between items-center gap-x-2">

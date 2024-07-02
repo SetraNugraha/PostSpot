@@ -37,7 +37,7 @@
 
                         {{-- Container After User Button Click --}}
                         <div x-show="open" @click.outside="open = false"
-                            class="fixed ml-[-60px] border-[1px] border-slate-600 rounded-lg my-2 shadow-lg flex flex-col gap-y-3 bg-white py-2">
+                            class="fixed z-50  ml-[-60px] border-[1px] border-slate-600 rounded-lg my-2 shadow-lg flex flex-col gap-y-3 bg-white py-2">
                             <p class="font-semibold mt-[-10px] border-b-[1px] px-2 py-2">Hello,
                                 {{ Auth::user()->username }}</p>
 

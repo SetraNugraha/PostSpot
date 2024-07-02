@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,7 +13,32 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('users.dashboard-index');
+
+        //get user id
+        $userId = Auth::user()->id;
+
+        // Daily Post
+        $queryDailyPost = DB::select('SELECT COUNT(id) AS daily_post FROM posts WHERE user_id = ? AND DATE(created_at) >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)', [$userId]);
+        $resultDailyPost = $queryDailyPost[0]->daily_post;
+
+        // Weekly Post
+        $queryWeeklyPost = DB::select('SELECT COUNT(id) AS weekly_post FROM posts WHERE user_id = ? AND DATE(created_at) >= DATE_SUB(NOW(), INTERVAL 7 DAY)', [$userId]);
+        $resultWeeklyPost = $queryWeeklyPost[0]->weekly_post;
+
+        // Monthly Post
+        $queryMonthlyPost = DB::select('SELECT COUNT(id) AS monthly_post FROM posts WHERE user_id = ? AND DATE(created_at) >= DATE_SUB(NOW(), INTERVAL 1 MONTH)', [$userId]);
+        $resultMonthlyPost = $queryMonthlyPost[0]->monthly_post;
+
+        // Total Post
+        $queryTotalPost = DB::select('SELECT COUNT(*) AS total_post FROM posts WHERE user_id = ?', [$userId]);
+        $resultTotalPost = $queryTotalPost[0]->total_post;
+
+        return view('users.dashboard-index', [
+            'totalPost' => $resultTotalPost,
+            'dailyPost' => $resultDailyPost,
+            'weeklyPost' => $resultWeeklyPost,
+            'monthlyPost' => $resultMonthlyPost
+        ]);
     }
 
     public function posts()
