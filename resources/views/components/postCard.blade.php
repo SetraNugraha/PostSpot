@@ -1,11 +1,11 @@
-@props(['post', 'readMore' => false])
+@props(['post', 'readMore' => false, 'ref'])
 
 {{-- Card Posts --}}
 <section class="card-posts {{ $readMore ? 'w-full' : '' }}">
     {{-- title --}}
     <div class="flex justify-between items-start ">
         <div class="w-[90%]">
-            <h1 class="text-lg font-bold ">{{ $post->title }}</h1>
+            <h1 class="text-lg font-bold ">{{ Str::words($post->title, 5, '...') }}</h1>
         </div>
         {{-- Button Action --}}
         <div class="w-[10%]">
@@ -37,7 +37,8 @@
         <div class="my-2 flex justify-between items-center">
             <div class="w-[80%] text-justify">
                 <span class="text-sm">{{ Str::words($post->body, 15) }}</span>
-                <a href="{{ route('posts.show', $post->id) }}" class="text-blue-500 ml-2">Read More &rarr;</a>
+                <a href="{{ route('posts.show', ['post' => $post->id, 'ref' => $ref]) }}" class="text-blue-500 ml-2">Read More
+                    &rarr;</a>
             </div>
 
             @if ($post->image)
@@ -47,6 +48,4 @@
             @endif
         </div>
     @endif
-
-
 </section>

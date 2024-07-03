@@ -119,7 +119,7 @@ class PostController extends Controller implements HasMiddleware
         ]);
 
         // Redirect to Dashboard
-        return redirect()->route('dashboard')->with('success', 'Your Post was updated.');
+        return redirect()->route('dashboard.posts')->with('success', 'Your Post was updated.');
     }
 
     /**

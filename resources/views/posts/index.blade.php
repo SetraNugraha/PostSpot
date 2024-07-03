@@ -23,7 +23,7 @@
             @else
                 <div class="grid grid-cols-2 gap-5 justify-center">
                     @foreach ($posts as $post)
-                        <x-postCard :post="$post" />
+                        <x-postCard :post="$post" ref="homepage" />
                     @endforeach
                 </div>
             @endif

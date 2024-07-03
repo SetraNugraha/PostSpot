@@ -18,7 +18,7 @@
                 {{-- Content if have post --}}
                 <div class="grid grid-cols-2 gap-5 mt-3">
                     @foreach ($posts as $post)
-                        <x-postCard :post="$post">
+                        <x-postCard :post="$post" ref="dashboard">
                             {{-- Button Action --}}
                             <div x-data="{ postAction: false }">
                                 <div class="relative left-5">
@@ -53,9 +53,9 @@
         </section>
 
         {{-- Pagination Button --}}
-        <div class="mt-10 w-[90%] mx-auto">
+        <div class="mt-10 mb-5 w-[90%] mx-auto">
             {{ $posts->links() }}
         </div>
     </div>
-    
+
 </x-dashboardLayout>

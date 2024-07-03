@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Index
-Route::redirect('/', 'posts');
+Route::redirect('/', '/posts');
 
 // User Post
 Route::get('/{user}/post', [DashboardController::class, 'showUserPost'])->name('showUserPost');
