@@ -1,4 +1,4 @@
-@props(['post', 'readMore' => false, 'ref'])
+@props(['post', 'readMore' => false, 'ref' => null])
 
 {{-- Card Posts --}}
 <section class="card-posts {{ $readMore ? 'w-full' : '' }}">
